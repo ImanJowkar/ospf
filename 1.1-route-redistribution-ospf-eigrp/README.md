@@ -14,10 +14,20 @@ no sh
 ip address 10.10.34.3 255.255.255.0
 
 
+interface FastEthernet1/1
+no sh
+ip address 10.10.122.3 255.255.255.0
+
+
+ip route 0.0.0.0 0.0.0.0 10.10.122.1
+
+
 router ospf 1
 router-id 3.3.3.3
 network 172.16.40.3 0.0.0.0 area 5
 network 10.10.34.3 0.0.0.0 area 5
+default-information originate metric 3
+
 
 
 sh ip protocols
@@ -82,11 +92,18 @@ no sh
 ip address 10.10.34.4 255.255.255.0
 
 
+interface FastEthernet1/1
+no sh
+ip address 10.10.122.100 255.255.255.0
+
+
+ip route 0.0.0.0 0.0.0.0 10.10.122.1
+
 router ospf 1
 router-id 4.4.4.4
 network 10.10.48.4 0.0.0.0 area 0
 network 10.10.34.4 0.0.0.0 area 5
-
+default-information originate metric 4
 
 
 
